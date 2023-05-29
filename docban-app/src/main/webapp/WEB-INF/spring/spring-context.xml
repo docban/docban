@@ -14,6 +14,6 @@
     <!-- Establecemos el paquete base donde se van a localizar los componentes anotados con Spring -->
     <context:component-scan base-package="org.docban.core"/>
     <context:component-scan base-package="org.docban.adapter"/>
-<!--    <context:component-scan base-package="org.docban.boot.rest"/>-->
+    <context:component-scan base-package="org.docban.app"/>
 
 </beans>

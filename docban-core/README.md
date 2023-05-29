@@ -1,4 +1,4 @@
-# Docban - Módulo Domain
+# Docban - Módulo Core
 
 _Breve descripción o introducción al proyecto._
 

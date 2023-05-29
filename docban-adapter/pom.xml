@@ -32,12 +32,7 @@
         <!-- Docban Dependencies -->
         <dependency>
             <groupId>${project.parent.groupId}</groupId>
-            <artifactId>docban-domain</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>${project.parent.groupId}</groupId>
-            <artifactId>docban-app</artifactId>
+            <artifactId>docban-core</artifactId>
         </dependency>
 
         <!-- Spring Dependencies -->
