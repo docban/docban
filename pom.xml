@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+<!-- ############################################################################################################### -->
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.docban</groupId>
+    <artifactId>docban</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>Docban</name>
+    <description></description>
+
+<!-- ############################################################################################################### -->
+
+    <modules>
+
+        <module>docban-core</module>
+        <module>docban-adapter</module>
+        <module>docban-boot</module>
+
+    </modules>
+
+<!-- ############################################################################################################### -->
+
+    <properties>
+
+        <!-- Constants -->
+        <const.java.version>17</const.java.version>
+        <const.encoding>UTF-8</const.encoding>
+
+        <!-- Maven -->
+        <maven.compiler.source>${const.java.version}</maven.compiler.source>
+        <maven.compiler.target>${const.java.version}</maven.compiler.target>
+
+        <!-- Project -->
+        <project.build.sourceEncoding>${const.encoding}</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>{const.encoding}</project.reporting.outputEncoding>
+
+        <!-- Dependencies -->
+        <dep.springframework.version>6.0.9</dep.springframework.version>
+        <dep.javax.servlet.version>4.0.1</dep.javax.servlet.version>
+        <dep.jackson.version>2.12.5</dep.jackson.version>
+        <dep.org.json.version>20210307</dep.org.json.version>
+        <dep.snakeyaml.version>1.29</dep.snakeyaml.version>
+        <dep.lombok.version>1.18.20</dep.lombok.version>
+        <dep.junit.jupiter.version>5.8.1</dep.junit.jupiter.version>
+
+        <!-- Plugins -->
+        <plugin.maven.compiler.version>3.8.1</plugin.maven.compiler.version>
+        <plugin.maven.surfire.version>3.0.0</plugin.maven.surfire.version>
+        <plugin.maven.war.version>3.3.2</plugin.maven.war.version>
+        <plugin.jetty.maven.version>11.0.10</plugin.jetty.maven.version>
+
+    </properties>
+
+<!-- ############################################################################################################### -->
+
+    <dependencyManagement>
+        <dependencies>
+
+            <!-- Docban Dependencies -->
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>docban-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>docban-adapter</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- Spring Dependencies -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${dep.springframework.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${dep.springframework.version}</version>
+            </dependency>
+
+            <!-- Servlet API -->
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>${dep.javax.servlet.version}</version>
+            </dependency>
+
+            <!-- Jackson Dependencies -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${dep.jackson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${dep.jackson.version}</version>
+            </dependency>
+
+            <!-- JSONObject -->
+            <dependency>
+                <groupId>org.json</groupId>
+                <artifactId>json</artifactId>
+                <version>${dep.org.json.version}</version>
+            </dependency>
+
+            <!-- SnakeYAML -->
+            <dependency>
+                <groupId>org.yaml</groupId>
+                <artifactId>snakeyaml</artifactId>
+                <version>${dep.snakeyaml.version}</version>
+            </dependency>
+
+            <!-- Lombok -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${dep.lombok.version}</version>
+            </dependency>
+
+            <!-- JUnit Jupiter -->
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-api</artifactId>
+                <version>${dep.junit.jupiter.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+<!-- ############################################################################################################### -->
+
+    <dependencies></dependencies>
+
+<!-- ############################################################################################################### -->
+
+    <build>
+
+    <!-- ########################################################################################################### -->
+
+        <pluginManagement>
+
+            <plugins>
+
+                <!-- Maven Compiler Plugin -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${plugin.maven.compiler.version}</version>
+                    <configuration>
+                        <source>${const.java.version}</source>
+                        <target>${const.java.version}</target>
+                        <compilerArgs>
+                            <arg>-parameters</arg>
+                        </compilerArgs>
+                    </configuration>
+                </plugin>
+
+                <!-- Maven Surefire Plugin -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${plugin.maven.surfire.version}</version>
+                    <configuration>
+                        <includes>
+                            <include>**/*Test.java</include>
+                        </includes>
+                    </configuration>
+                </plugin>
+
+                <!-- War Plugin -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>${plugin.maven.war.version}</version>
+                </plugin>
+
+                <!-- Jetty Plugin -->
+                <plugin>
+                    <groupId>org.eclipse.jetty</groupId>
+                    <artifactId>jetty-maven-plugin</artifactId>
+                    <version>${plugin.jetty.maven.version}</version>
+                </plugin>
+
+            </plugins>
+
+        </pluginManagement>
+
+    <!-- ########################################################################################################### -->
+
+        <plugins>
+
+            <!-- Maven Compiler Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+
+            <!-- Maven Surefire Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+            </plugin>
+
+        </plugins>
+
+    </build>
+
+<!-- ############################################################################################################### -->
+
+    <developers>
+
+        <developer>
+            <name>Ángel Herce Soto</name>
+            <email>indenaiten@gmail.com</email>
+        </developer>
+
+    </developers>
+
+<!-- ############################################################################################################### -->
+
+</project>
