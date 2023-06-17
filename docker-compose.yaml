@@ -1,0 +1,13 @@
+version: '3'
+services:
+  app:
+    image: maven:3.8.4-openjdk-17
+    working_dir: /app
+    command: mvn clean install jetty:run
+    ports:
+      - 8080:8080
+    volumes:
+      - ./:/app
+      - vol-maven-repo:/root/.m2
+volumes:
+  vol-maven-repo:
