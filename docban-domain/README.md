@@ -14,4 +14,5 @@ _Breve descripción o introducción al proyecto._
 ## Desarrolladores
 
 - Ángel Herce Soto - [GitHub](https://github.com/Indenaiten)
+- Patricia Fernández González - [GitHub](https://github.com/Patrifgonz)
 
