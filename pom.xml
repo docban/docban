@@ -17,7 +17,8 @@
 
     <modules>
 
-        <module>docban-core</module>
+        <module>docban-domain</module>
+        <module>docban-app</module>
         <module>docban-adapter</module>
         <module>docban-boot</module>
 
@@ -68,7 +69,13 @@
             <!-- Docban Dependencies -->
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>docban-core</artifactId>
+                <artifactId>docban-domain</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>docban-app</artifactId>
                 <version>${project.version}</version>
             </dependency>
 

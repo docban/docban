@@ -39,7 +39,12 @@
         <!-- Docban Dependencies -->
         <dependency>
             <groupId>${project.parent.groupId}</groupId>
-            <artifactId>docban-core</artifactId>
+            <artifactId>docban-domain</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.parent.groupId}</groupId>
+            <artifactId>docban-app</artifactId>
         </dependency>
 
         <dependency>
