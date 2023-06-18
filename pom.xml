@@ -54,6 +54,10 @@
         <plugin.maven.war.version>3.3.2</plugin.maven.war.version>
         <plugin.jetty.maven.version>11.0.10</plugin.jetty.maven.version>
 
+        <!-- Sonar -->
+        <sonar.organization>docban</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+
     </properties>
 
 <!-- ############################################################################################################### -->
