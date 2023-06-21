@@ -17,9 +17,9 @@
 
     <modules>
 
-        <module>docban-core</module>
-        <module>docban-adapter</module>
+        <module>docban-domain</module>
         <module>docban-app</module>
+        <module>docban-infraestructure</module>
 
     </modules>
 
@@ -68,13 +68,7 @@
             <!-- Docban Dependencies -->
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>docban-core</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>docban-adapter</artifactId>
+                <artifactId>docban-domain</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
@@ -88,6 +82,12 @@
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-context</artifactId>
+                <version>${dep.springframework.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-beans</artifactId>
                 <version>${dep.springframework.version}</version>
             </dependency>
 
@@ -138,10 +138,16 @@
                 <version>${dep.lombok.version}</version>
             </dependency>
 
-            <!-- JUnit Jupiter -->
+            <!-- JUnit Dependencies -->
             <dependency>
                 <groupId>org.junit.jupiter</groupId>
                 <artifactId>junit-jupiter-api</artifactId>
+                <version>${dep.junit.jupiter.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-params</artifactId>
                 <version>${dep.junit.jupiter.version}</version>
             </dependency>
 
@@ -150,7 +156,26 @@
 
 <!-- ############################################################################################################### -->
 
-    <dependencies></dependencies>
+    <dependencies>
+
+        <!-- Lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
+        <!-- JUnit Dependencies -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+        </dependency>
+
+    </dependencies>
 
 <!-- ############################################################################################################### -->
 

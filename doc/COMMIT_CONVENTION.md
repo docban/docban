@@ -28,7 +28,9 @@ Cada elemento tiene un propósito específico y algunas reglas:
     - **refactor**: Cambio de código que ni añade una característica ni arregla un error
     - **perf**: Cambios de código que mejoran el rendimiento
     - **test**: Adición o modificación de pruebas
-    - **chore**: Cambios en el proceso de build o herramientas auxiliares y librerías
+    - **revert**: Revertir un commit anterior.
+    - **release**: Cambios relacionados con la preparación y lanzamiento de una versión del proyecto.
+    - **chore**: Cambios en el proceso de build o herramientas auxiliares, cambios en la estructura, tareas de mantenimiento, etc.
 
 - **Scope**: Es opcional y especifica el lugar del código donde tiene efecto el commit (por ejemplo, componente o nombre del archivo).
 

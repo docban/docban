@@ -1,5 +1,5 @@
 ### Project ###
-target/
+docban-boot-rest/target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/

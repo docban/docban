@@ -49,7 +49,7 @@ En resumen, este sistema es una solución integral para la gestión de proyectos
 
 - Convención de Commits
 
-Para garantizar un historial de commits coherente y fácil de entender, seguimos la convención de los [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/). Consulta nuestra [guía de formato de commit](COMMIT_CONVENTION.md) para obtener más detalles.
+Para garantizar un historial de commits coherente y fácil de entender, seguimos la convención de los [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/). Consulta nuestra [guía de formato de commit](doc/COMMIT_CONVENTION.md) para obtener más detalles.
 
 ## Versionado
 

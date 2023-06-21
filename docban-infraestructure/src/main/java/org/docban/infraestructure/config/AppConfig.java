@@ -1,6 +1,6 @@
-package org.docban.app.config;
+package org.docban.infraestructure.config;
 
-import org.docban.app.config.yaml.YamlPropertySourceFactory;
+import org.docban.infraestructure.config.yaml.YamlPropertySourceFactory;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 

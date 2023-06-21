@@ -1,4 +1,4 @@
-# Docban - Módulo Adapter
+# Docban - Módulo Infraestructure
 
 _Breve descripción o introducción al proyecto._
 

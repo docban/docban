@@ -16,10 +16,10 @@
 <!-- ############################################################################################################### -->
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>docban-core</artifactId>
+    <artifactId>docban-domain</artifactId>
     <packaging>jar</packaging>
-    <name>Docban - Core Module</name>
-    <description>Core Module</description>
+    <name>Docban - Domain Module</name>
+    <description>Domain Module</description>
 
 <!-- ############################################################################################################### -->
 
@@ -27,29 +27,7 @@
 
 <!-- ############################################################################################################### -->
 
-    <dependencies>
-
-        <!-- Spring Context -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-        </dependency>
-
-        <!-- Lombok -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <scope>provided</scope>
-        </dependency>
-
-        <!-- JUnit Jupiter -->
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-    </dependencies>
+    <dependencies></dependencies>
 
 <!-- ############################################################################################################### -->
 

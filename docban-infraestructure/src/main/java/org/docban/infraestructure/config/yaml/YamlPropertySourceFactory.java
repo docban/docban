@@ -1,4 +1,4 @@
-package org.docban.app.config.yaml;
+package org.docban.infraestructure.config.yaml;
 
 import org.springframework.beans.factory.config.YamlPropertiesFactoryBean;
 import org.springframework.core.env.PropertiesPropertySource;

@@ -17,130 +17,29 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>docban-app</artifactId>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>Docban - App Module</name>
     <description>App Module</description>
 
 <!-- ############################################################################################################### -->
 
-    <properties>
-
-        <!-- Project -->
-        <project.built.name>${project.artifactId}</project.built.name>
-        <project.source.directory>src/main/java</project.source.directory>
-        <project.war.source.directory>src/main/webapp</project.war.source.directory>
-
-    </properties>
+    <properties></properties>
 
 <!-- ############################################################################################################### -->
 
     <dependencies>
 
-        <!-- Docban Dependencies -->
+        <!-- Docban Domain -->
         <dependency>
             <groupId>${project.parent.groupId}</groupId>
-            <artifactId>docban-core</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>${project.parent.groupId}</groupId>
-            <artifactId>docban-adapter</artifactId>
-        </dependency>
-
-        <!-- Spring Dependencies -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-        </dependency>
-
-        <!-- Servlet API -->
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-        </dependency>
-
-        <!-- Jackson Dependencies -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-        </dependency>
-
-        <!-- JSONObject -->
-        <dependency>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
-        </dependency>
-
-        <!-- SnakeYAML -->
-        <dependency>
-            <groupId>org.yaml</groupId>
-            <artifactId>snakeyaml</artifactId>
-        </dependency>
-
-        <!-- Lombok -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <scope>provided</scope>
-        </dependency>
-
-        <!-- JUnit Jupiter -->
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <scope>test</scope>
+            <artifactId>docban-domain</artifactId>
         </dependency>
 
     </dependencies>
 
 <!-- ############################################################################################################### -->
 
-    <build>
-
-        <!-- Establecemos el nombre del archivo final de la aplicación cuando se construya -->
-        <finalName>${project.built.name}</finalName>
-
-        <!-- Establecemos el directorio de origen de los archivos fuente -->
-        <sourceDirectory>src/main/java</sourceDirectory>
-
-    <!-- ########################################################################################################### -->
-
-        <plugins>
-
-            <!-- WAR Plugin -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <configuration>
-                    <failOnMissingWebXml>true</failOnMissingWebXml>
-                    <warSourceDirectory>src/main/webapp</warSourceDirectory>
-                </configuration>
-            </plugin>
-
-            <!-- Jetty Plugin -->
-            <plugin>
-                <groupId>org.eclipse.jetty</groupId>
-                <artifactId>jetty-maven-plugin</artifactId>
-                <configuration>
-                    <webApp>
-                        <contextPath>/</contextPath>
-                    </webApp>
-                </configuration>
-            </plugin>
-
-        </plugins>
-
-    </build>
+    <build></build>
 
 <!-- ############################################################################################################### -->
 
