@@ -10,6 +10,7 @@ import org.docban.domain.common.model.vo.UUID;
 import org.docban.domain.password.event.CreateNewPasswordEvent;
 import org.docban.domain.password.vo.PasswordId;
 import org.docban.domain.password.vo.PasswordSalt;
+import org.docban.domain.user.vo.UserId;
 
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
@@ -31,6 +32,7 @@ public class Password implements Entity {
 
 // ------------------------------------------------------------------------------------------------------------------ \\
     private PasswordId id;
+    private UserId owner;
     private HashSha256 password;
     private PasswordSalt salt;
     private LocalDateTime creationDate;
@@ -39,12 +41,13 @@ public class Password implements Entity {
 // -------| CONSTRUCTOR |-------------------------------------------------------------------------------------------- \\
 // ------------------------------------------------------------------------------------------------------------------ \\
 
-    public Password( final String password ) {
+    public Password( final UserId owner, final String password ) {
         //Validate Password
         this.validatePasswordFormat( password );
 
         //Set Data
         this.id = new PasswordId( UUID.build().value() );
+        this.owner = owner;
         this.salt = new PasswordSalt( UUID.build().value() );
         this.password = this.buildPassword( password, this.salt );
         this.creationDate = TimestampBuilder.now();
@@ -86,6 +89,7 @@ public class Password implements Entity {
 
     private void validate(){
         if( this.id == null ) throw new IllegalArgumentException( "La id de la contraseña no puede ser nula" );
+        if( this.owner == null ) throw new IllegalArgumentException( "La id del usuario no puede ser nulo" );
         if( this.password == null ) throw new IllegalArgumentException( "La contraseña no puede ser nula" );
         if( this.salt == null ) throw new IllegalArgumentException( "La sal de la contraseña no puede ser nula" );
         if( this.creationDate == null ) throw new IllegalArgumentException( "La fecha de creación de la contraseña no puede ser nula" );
