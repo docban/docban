@@ -37,7 +37,7 @@
 
         <!-- Project -->
         <project.build.sourceEncoding>${const.encoding}</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>{const.encoding}</project.reporting.outputEncoding>
+        <project.reporting.outputEncoding>${const.encoding}</project.reporting.outputEncoding>
 
         <!-- Dependencies -->
         <dep.springframework.version>6.0.9</dep.springframework.version>
