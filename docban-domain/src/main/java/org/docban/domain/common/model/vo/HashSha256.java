@@ -9,7 +9,7 @@ import java.util.Objects;
 import java.util.regex.Pattern;
 
 @ToString
-public class HashSha256 implements ValueObject<HashSha256, String> {
+public class HashSha256 implements ValueObject<String> {
 
     private static final Long serialVersionUID = 1L;
 
@@ -36,11 +36,6 @@ public class HashSha256 implements ValueObject<HashSha256, String> {
     @Override
     public String value() {
         return this.hash;
-    }
-
-    @Override
-    public HashSha256 clone() {
-        return new HashSha256( this.hash );
     }
 
 // ------------------------------------------------------------------------------------------------------------------ \\

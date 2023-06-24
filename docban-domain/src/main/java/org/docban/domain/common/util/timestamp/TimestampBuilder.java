@@ -5,6 +5,9 @@ import java.time.ZonedDateTime;
 
 public class TimestampBuilder {
 
+    private TimestampBuilder() {
+    }
+
     public static final LocalDateTime now() {
         final ZonedDateTime zonedDateTime = ZonedDateTime.now();
         return zonedDateTime.toLocalDateTime();

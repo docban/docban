@@ -7,7 +7,7 @@ import java.util.Objects;
 import java.util.regex.Pattern;
 
 @ToString
-public class UserName implements ValueObject<UserName, String> {
+public class UserName implements ValueObject<String> {
 
     private static final long serialVersionUID = 1L;
 
@@ -40,11 +40,6 @@ public class UserName implements ValueObject<UserName, String> {
     @Override
     public String value(){
         return this.userName;
-    }
-
-    @Override
-    public UserName clone() {
-        return new UserName( this.userName );
     }
 
 // ------------------------------------------------------------------------------------------------------------------ \\

@@ -9,7 +9,7 @@ public class EmailTest {
 
     @ParameterizedTest(name = "Email: {0}")
     @ValueSource( strings = { "example@host.com", "example_123@host.com" })
-    public void givenAnValidEmail_whenCreateEmail_thenShouldCreateNewEmail( final String givenEmail) {
+    public void givenAnValidEmail_whenCreateEmail_thenShouldCreateNewEmail( final String givenEmail ) {
         //When
         final Email email = new Email( givenEmail );
 
@@ -47,19 +47,5 @@ public class EmailTest {
 
         //Then
         Assertions.assertTrue( result );
-    }
-
-    @Test
-    public void givenAnEmail_whenClone_thenShouldCreateNewEmail() {
-        //Given
-        final Email givenEmail = new Email( "example@host.com" );
-
-        //When
-        final Email newEmailValue = givenEmail.clone();
-
-        //Then
-        Assertions.assertNotNull( newEmailValue );
-        Assertions.assertEquals( givenEmail, newEmailValue );
-        Assertions.assertNotEquals( givenEmail.hashCode(), newEmailValue.hashCode() );
     }
 }

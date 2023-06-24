@@ -6,7 +6,7 @@ import org.docban.domain.common.base.ValueObject;
 import java.util.Objects;
 
 @ToString
-public class Email implements ValueObject<Email, String> {
+public class Email implements ValueObject<String> {
 
     private static final Long serialVersionUID = 1L;
 
@@ -32,11 +32,6 @@ public class Email implements ValueObject<Email, String> {
     @Override
     public String value() {
         return this.email;
-    }
-
-    @Override
-    public Email clone() {
-        return new Email( this.email );
     }
 
 // ------------------------------------------------------------------------------------------------------------------ \\

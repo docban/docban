@@ -7,7 +7,7 @@ import java.util.Objects;
 import java.util.regex.Pattern;
 
 @ToString
-public class UUID implements ValueObject<UUID, String> {
+public class UUID implements ValueObject<String> {
 
     private static final Long serialVersionUID = 1L;
 
@@ -34,11 +34,6 @@ public class UUID implements ValueObject<UUID, String> {
     @Override
     public String value() {
         return this.uuid;
-    }
-
-    @Override
-    public UUID clone() {
-        return new UUID( this.uuid );
     }
 
 // ------------------------------------------------------------------------------------------------------------------ \\

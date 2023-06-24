@@ -7,7 +7,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 @ToString
-public class LastName implements ValueObject<LastName, String> {
+public class LastName implements ValueObject<String> {
 
     private static final Long serialVersionUID = 1L;
 
@@ -49,9 +49,12 @@ public class LastName implements ValueObject<LastName, String> {
         return this.value;
     }
 
-    @Override
-    public LastName clone() {
-        return new LastName( this.firstName, this.secondName );
+    public String getFirstName() {
+        return this.firstName;
+    }
+
+    public Optional<String> getSecondName() {
+        return this.secondName;
     }
 
 // ------------------------------------------------------------------------------------------------------------------ \\
