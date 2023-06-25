@@ -41,7 +41,7 @@ public class TimestampTest {
     }
 
     @Test
-    public void givenANulñInstant_whenCreateTimestamp_thenThrowIllegalArgumentException() {
+    public void givenANullInstant_whenCreateTimestamp_thenThrowIllegalArgumentException() {
         //Given
         final Instant givenInstant = null;
 
