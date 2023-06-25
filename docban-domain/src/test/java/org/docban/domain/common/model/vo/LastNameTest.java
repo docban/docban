@@ -10,6 +10,10 @@ import java.util.Optional;
 
 public class LastNameTest {
 
+// ------------------------------------------------------------------------------------------------------------------ \\
+// -------| CORRECT CREATION |--------------------------------------------------------------------------------------- \\
+// ------------------------------------------------------------------------------------------------------------------ \\
+
     @ParameterizedTest( name = "LastName = FirstName: {0}, SecondName: {1}" )
     @CsvSource({ "Herce,Soto", "Fernández,González", "Pérez,del Río" })
     public void givenAnValidFirstLastNameAndSecondLastName_whenCreateLastName_thenShouldCreateNewLastName( final String givenFirstLastName, final String givenSecondLastName ){
@@ -40,6 +44,10 @@ public class LastNameTest {
         final Optional<String> secondLastName = lastName.getSecondName();
         Assertions.assertFalse( secondLastName.isPresent() );
     }
+
+// ------------------------------------------------------------------------------------------------------------------ \\
+// -------| INCORRECT CREATION |------------------------------------------------------------------------------------- \\
+// ------------------------------------------------------------------------------------------------------------------ \\
 
     @ParameterizedTest( name = "LastName = FirstName: {0}, SecondName: {1}" )
     @CsvSource({
@@ -81,6 +89,10 @@ public class LastNameTest {
         final IllegalArgumentException exception = Assertions.assertThrows( IllegalArgumentException.class, () -> LastName.of( givenLastName ) );
     }
 
+// ------------------------------------------------------------------------------------------------------------------ \\
+// -------| EQUALS COMPARATION |------------------------------------------------------------------------------------- \\
+// ------------------------------------------------------------------------------------------------------------------ \\
+
     @Test
     public void givenIdenticalFirstLastNameAndSecondLastName_whenCompare_thenShouldBeEquals() {
         //Given
@@ -107,6 +119,10 @@ public class LastNameTest {
         Assertions.assertTrue( result );
     }
 
+// ------------------------------------------------------------------------------------------------------------------ \\
+// -------| NOT EQUALS COMPARATION |--------------------------------------------------------------------------------- \\
+// ------------------------------------------------------------------------------------------------------------------ \\
+
     @Test
     public void givenDiferentFirstLastNameAndSecondLastName_whenCompare_thenShouldBeNotEquals() {
         //Given
@@ -132,4 +148,7 @@ public class LastNameTest {
         //Then
         Assertions.assertFalse( result );
     }
+
+// ------------------------------------------------------------------------------------------------------------------ \\
+
 }

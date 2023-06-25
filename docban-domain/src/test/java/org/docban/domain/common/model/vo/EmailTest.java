@@ -7,6 +7,10 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 public class EmailTest {
 
+// ------------------------------------------------------------------------------------------------------------------ \\
+// -------| CORRECT CREATION |--------------------------------------------------------------------------------------- \\
+// ------------------------------------------------------------------------------------------------------------------ \\
+
     @ParameterizedTest(name = "Email = {0}")
     @ValueSource( strings = { "example@host.com", "example_123@host.com", "EXAMPLE_123@HOST.COM" })
     public void givenAnValidEmail_whenCreateEmail_thenShouldCreateNewEmail( final String givenEmail ) {
@@ -17,6 +21,10 @@ public class EmailTest {
         Assertions.assertNotNull(email);
         Assertions.assertEquals( givenEmail, email.value() );
     }
+
+// ------------------------------------------------------------------------------------------------------------------ \\
+// -------| INCORRECT CREATION |------------------------------------------------------------------------------------- \\
+// ------------------------------------------------------------------------------------------------------------------ \\
 
     @ParameterizedTest(name = "Email = {0}")
     @ValueSource( strings = { "example", "example @host.com", "example@host", "example@exa@host.com" })
@@ -34,6 +42,10 @@ public class EmailTest {
         final IllegalArgumentException exception = Assertions.assertThrows( IllegalArgumentException.class, () -> Email.of( givenEmail ) );
     }
 
+// ------------------------------------------------------------------------------------------------------------------ \\
+// -------| EQUALS COMPARATION |------------------------------------------------------------------------------------- \\
+// ------------------------------------------------------------------------------------------------------------------ \\
+
     @Test
     public void givenIdenticalEmails_whenCompare_thenShouldBeEquals() {
         //Given
@@ -47,6 +59,10 @@ public class EmailTest {
         Assertions.assertTrue( result );
     }
 
+// ------------------------------------------------------------------------------------------------------------------ \\
+// -------| NOT EQUALS COMPARATION |--------------------------------------------------------------------------------- \\
+// ------------------------------------------------------------------------------------------------------------------ \\
+
     @Test
     public void givenDiferentEmails_whenCompare_thenShouldBeEquals() {
         //Given
@@ -59,4 +75,7 @@ public class EmailTest {
         //Then
         Assertions.assertFalse( result );
     }
+
+// ------------------------------------------------------------------------------------------------------------------ \\
+
 }

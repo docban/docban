@@ -7,6 +7,10 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 public class NameTest {
 
+// ------------------------------------------------------------------------------------------------------------------ \\
+// -------| CORRECT CREATION |--------------------------------------------------------------------------------------- \\
+// ------------------------------------------------------------------------------------------------------------------ \\
+
     @ParameterizedTest(name = "Name = {0}")
     @ValueSource( strings = { "Ángel", "Patricia", "María del Carmen", "Juan-Carlos" })
     public void givenAnValidName_whenCreateName_thenShouldCreateNewName( final String givenName ) {
@@ -17,6 +21,10 @@ public class NameTest {
         Assertions.assertNotNull( name );
         Assertions.assertEquals( givenName, name.value() );
     }
+
+// ------------------------------------------------------------------------------------------------------------------ \\
+// -------| INCORRECT CREATION |------------------------------------------------------------------------------------- \\
+// ------------------------------------------------------------------------------------------------------------------ \\
 
     @ParameterizedTest(name = "Name = {0}")
     @ValueSource( strings = {
@@ -40,6 +48,10 @@ public class NameTest {
         final IllegalArgumentException exception = Assertions.assertThrows( IllegalArgumentException.class, () -> Name.of( givenName ) );
     }
 
+// ------------------------------------------------------------------------------------------------------------------ \\
+// -------| EQUALS COMPARATION |------------------------------------------------------------------------------------- \\
+// ------------------------------------------------------------------------------------------------------------------ \\
+
     @Test
     public void givenIdenticalName_whenCompare_thenShouldBeEquals() {
         //Given
@@ -53,6 +65,10 @@ public class NameTest {
         Assertions.assertTrue( result );
     }
 
+// ------------------------------------------------------------------------------------------------------------------ \\
+// -------| NOT EQUALS COMPARATION |--------------------------------------------------------------------------------- \\
+// ------------------------------------------------------------------------------------------------------------------ \\
+
     @Test
     public void givenDiferentName_whenCompare_thenShouldBeNotEquals() {
         //Given
@@ -65,4 +81,7 @@ public class NameTest {
         //Then
         Assertions.assertFalse( result );
     }
+
+// ------------------------------------------------------------------------------------------------------------------ \\
+
 }
