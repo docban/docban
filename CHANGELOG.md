@@ -20,13 +20,14 @@ El formato está basado en [Keep a Changelog](https://keepachangelog.com/en/1.1.
   
 
 - `DOMAIN` - **Nuevos tests unitarios**: _Se han añadido nuevos tests unitarios`._
-  - _Se ha añadido los tests unitarios para el **ValueObject** de `Email`._ 
-  - _Se ha añadido los tests unitarios para el **ValueObject** de `Name`._ 
-  - _Se ha añadido los tests unitarios para el **ValueObject** de `LastName`._ 
-  - _Se ha añadido los tests unitarios para el **ValueObject** de `Timestamp`._ 
-  - _Se ha añadido los tests unitarios para el **ValueObject** de `UserId` de la entidad `User`._ 
-  - _Se ha añadido los tests unitarios para el **ValueObject** de `PasswordSalt` de la entidad `Password`._ 
-  
+  - _Se han añadido los tests unitarios para el **ValueObject** de `Email`._ 
+  - _Se han añadido los tests unitarios para el **ValueObject** de `Name`._ 
+  - _Se han añadido los tests unitarios para el **ValueObject** de `LastName`._ 
+  - _Se han añadido los tests unitarios para el **ValueObject** de `Timestamp`._ 
+  - _Se han añadido los tests unitarios para el **ValueObject** de `UserId` de la entidad `User`._ 
+  - _Se han añadido los tests unitarios para el **ValueObject** de `PasswordSalt` de la entidad `Password`._ 
+  - _Se han añadido los tests unitarios para el **ValueObject** de `HashSha256`._
+
 
 - `DOMAIN` - **Nueva Entidad `Password`**: _Se ha añadido la entidad Password en la capa de dominio._
   - _Se han creado los **ValueObjects** necesarios para la entidad `Password` (`PasswordId` y `PasswordSalt`)._
