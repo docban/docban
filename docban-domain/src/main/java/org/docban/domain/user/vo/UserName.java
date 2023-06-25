@@ -1,12 +1,10 @@
 package org.docban.domain.user.vo;
 
-import lombok.ToString;
 import org.docban.domain.common.base.ValueObject;
 
 import java.util.Objects;
 import java.util.regex.Pattern;
 
-@ToString
 public class UserName implements ValueObject<String> {
 
     private static final long serialVersionUID = 1L;

@@ -1,7 +1,6 @@
 package org.docban.domain.common.model.vo;
 
 import lombok.SneakyThrows;
-import lombok.ToString;
 import org.docban.domain.common.base.ValueObject;
 
 import java.security.MessageDigest;
@@ -10,7 +9,6 @@ import java.util.Arrays;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
-@ToString
 public class HashSha256 implements ValueObject<String> {
 
     private static final Long serialVersionUID = 1L;

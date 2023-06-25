@@ -1,14 +1,10 @@
 package org.docban.domain.user.vo;
 
-import lombok.ToString;
 import org.docban.domain.common.base.ValueObject;
-import org.docban.domain.password.vo.PasswordId;
 
 import java.util.Objects;
 import java.util.UUID;
 
-
-@ToString
 public class UserId implements ValueObject<UUID> {
 
     private static final Long serialVersionUID = 1L;

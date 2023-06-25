@@ -1,12 +1,10 @@
 package org.docban.domain.common.model.vo;
 
-import lombok.ToString;
 import org.docban.domain.common.base.ValueObject;
 
 import java.util.Objects;
 import java.util.Optional;
 
-@ToString
 public class LastName implements ValueObject<String> {
 
     private static final Long serialVersionUID = 1L;
