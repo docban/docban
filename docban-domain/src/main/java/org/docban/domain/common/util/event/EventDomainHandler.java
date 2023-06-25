@@ -2,9 +2,13 @@ package org.docban.domain.common.util.event;
 
 import java.util.*;
 
-public abstract class EventDomainHandler {
+public final class EventDomainHandler {
 
     private static final Map<Class<? extends EventDomain>, Set<EventDomainListener>> register = new HashMap<>();
+
+    private EventDomainHandler() {
+        throw new IllegalStateException( "Utility class" );
+    }
 
     public static final <E extends EventDomain, L extends EventDomainListener<E>> void addEventListener( final Class<E> event, final L listener ){
         final Set<EventDomainListener> listeners = EventDomainHandler.register.computeIfAbsent( event, k -> new HashSet<>() );
