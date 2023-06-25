@@ -3,28 +3,45 @@ package org.docban.domain.common.model.vo;
 import lombok.ToString;
 import org.docban.domain.common.base.ValueObject;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.Objects;
-import java.util.regex.Pattern;
 
 @ToString
-public class UUID implements ValueObject<String> {
+public class Timestamp implements ValueObject<Instant> {
 
     private static final Long serialVersionUID = 1L;
 
-    /** Expresión regular para validar el formato de un UUID */
-    public static final Pattern PATTERN = Pattern.compile( "^[a-fA-F\\d]{8}-[a-fA-F\\d]{4}-[a-fA-F\\d]{4}-[a-fA-F\\d]{4}-[a-fA-F\\d]{12}$" );
+    /**
+     * Regex para validar un nombre.
+     * El nombre debe empezar con 2 letras, puede contener letras, espacios y/o guiones, y debe terminar con una letra.
+     * El nombre no puede tener más de 100 caracteres.
+     */
+    public static final String REGEX = "^\\w{2}[\\w\\s-]{98}\\w$";
 
 // ------------------------------------------------------------------------------------------------------------------ \\
 
-    public final String uuid;
+    private final Instant timestamp;
 
 // ------------------------------------------------------------------------------------------------------------------ \\
 // -------| CONSTRUCTOR |-------------------------------------------------------------------------------------------- \\
 // ------------------------------------------------------------------------------------------------------------------ \\
 
-    public UUID( final String uuid ) {
-        this.uuid = uuid;
+    private Timestamp( final Instant timestamp ) {
+        this.timestamp = timestamp;
         this.validate();
+    }
+
+    public static Timestamp of( final Instant instant ) {
+        return new Timestamp( instant );
+    }
+
+// ------------------------------------------------------------------------------------------------------------------ \\
+// -------| BUILDER METHODS |---------------------------------------------------------------------------------------- \\
+// ------------------------------------------------------------------------------------------------------------------ \\
+
+    public static Timestamp build(){
+        return new Timestamp( Instant.now() );
     }
 
 // ------------------------------------------------------------------------------------------------------------------ \\
@@ -32,8 +49,12 @@ public class UUID implements ValueObject<String> {
 // ------------------------------------------------------------------------------------------------------------------ \\
 
     @Override
-    public String value() {
-        return this.uuid;
+    public Instant value(){
+        return this.timestamp;
+    }
+
+    public LocalDateTime valueAsLocalDateTime(){
+        return LocalDateTime.ofInstant( this.timestamp, java.time.ZoneId.systemDefault() );
     }
 
 // ------------------------------------------------------------------------------------------------------------------ \\
@@ -43,17 +64,8 @@ public class UUID implements ValueObject<String> {
     @Override
     public boolean equals( final Object o ) {
         if ( o == null || getClass() != o.getClass() ) return false;
-        final UUID target = (UUID) o;
-        return Objects.equals( this.uuid, target.uuid );
-    }
-
-// ------------------------------------------------------------------------------------------------------------------ \\
-// -------| BUILDER METHODS |---------------------------------------------------------------------------------------- \\
-// ------------------------------------------------------------------------------------------------------------------ \\
-
-    public static UUID build() {
-        final String instant = String.valueOf( System.currentTimeMillis() );
-        return new UUID( java.util.UUID.fromString( instant ).toString() );
+        final Timestamp target = (Timestamp) o;
+        return Objects.equals( this.timestamp, target.timestamp );
     }
 
 // ------------------------------------------------------------------------------------------------------------------ \\
@@ -61,8 +73,8 @@ public class UUID implements ValueObject<String> {
 // ------------------------------------------------------------------------------------------------------------------ \\
 
     private void validate(){
-        if( this.uuid == null ) throw new IllegalArgumentException( "El ID no puede ser nulo" );
-        if( !PATTERN.matcher( this.uuid ).matches() ) throw new IllegalArgumentException( "El ID no es válido" );
+        if( this.timestamp == null ) throw new IllegalArgumentException( "El timestamp no puede ser nulo" );
+        if( this.timestamp.isAfter( Instant.now() ) ) throw new IllegalArgumentException( "El timestamp no puede ser posterior a la fecha actual" );
     }
 
 // ------------------------------------------------------------------------------------------------------------------ \\
