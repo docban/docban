@@ -7,7 +7,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 public class NameTest {
 
-    @ParameterizedTest(name = "Name: {0}")
+    @ParameterizedTest(name = "Name = {0}")
     @ValueSource( strings = { "Ángel", "Patricia", "María del Carmen", "Juan-Carlos" })
     public void givenAnValidName_whenCreateName_thenShouldCreateNewName( final String givenName ) {
         //When
@@ -18,7 +18,7 @@ public class NameTest {
         Assertions.assertEquals( givenName, name.value() );
     }
 
-    @ParameterizedTest(name = "Name: {0}")
+    @ParameterizedTest(name = "Name = {0}")
     @ValueSource( strings = { "Ángel123", "Patricia.mola", " María", "A", "María-Josefa-Antonietta-Isabella-Cristina-Giorgina-Francisca-Gabriella-Carolina-Inés-Teresa-Avila-Cecilia" })
     public void givenAnInvalidName_whenCreateName_thenThrowIllegalArgumentException( final String givenName ) {
         //When and Then

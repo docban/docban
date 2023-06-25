@@ -7,7 +7,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 public class EmailTest {
 
-    @ParameterizedTest(name = "Email: {0}")
+    @ParameterizedTest(name = "Email = {0}")
     @ValueSource( strings = { "example@host.com", "example_123@host.com", "EXAMPLE_123@HOST.COM" })
     public void givenAnValidEmail_whenCreateEmail_thenShouldCreateNewEmail( final String givenEmail ) {
         //When
@@ -18,7 +18,7 @@ public class EmailTest {
         Assertions.assertEquals( givenEmail, email.value() );
     }
 
-    @ParameterizedTest(name = "Email: {0}")
+    @ParameterizedTest(name = "Email = {0}")
     @ValueSource( strings = { "example", "example @host.com", "example@host", "example@exa@host.com" })
     public void givenAnInvalidEmail_whenCreateEmail_thenThrowIllegalArgumentException( final String givenEmail ) {
         //When and Then
