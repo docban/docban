@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 public class EmailTest {
 
     @ParameterizedTest(name = "Email: {0}")
-    @ValueSource( strings = { "example@host.com", "example_123@host.com" })
+    @ValueSource( strings = { "example@host.com", "example_123@host.com", "EXAMPLE_123@HOST.COM" })
     public void givenAnValidEmail_whenCreateEmail_thenShouldCreateNewEmail( final String givenEmail ) {
         //When
         final Email email = new Email( givenEmail );

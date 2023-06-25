@@ -11,7 +11,7 @@ public class Email implements ValueObject<String> {
     private static final Long serialVersionUID = 1L;
 
     /** Regex para validar un email */
-    public static final String REGEX = "^[\\w\\d_.+-]+@[\\w\\d-]+\\.[\\w\\d-.]+$";
+    public static final String REGEX = "^[\\w.+-]+@[\\w-]+\\.[\\w-.]+$";
 
 // ------------------------------------------------------------------------------------------------------------------ \\
 
