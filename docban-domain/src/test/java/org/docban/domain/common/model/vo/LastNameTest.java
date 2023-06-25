@@ -94,7 +94,7 @@ public class LastNameTest {
 // ------------------------------------------------------------------------------------------------------------------ \\
 
     @Test
-    public void givenIdenticalFirstLastNameAndSecondLastName_whenCompare_thenShouldBeEquals() {
+    public void givenIdenticalFirstLastNamesAndSecondLastNames_whenCompare_thenShouldBeEquals() {
         //Given
         final LastName givenLastName1 = LastName.of( "Herce", "Fernández" );
         final LastName givenLastName2 = LastName.of( "Herce", "Fernández" );
@@ -107,7 +107,7 @@ public class LastNameTest {
     }
 
     @Test
-    public void givenIdenticalFirstLastName_whenCompare_thenShouldBeEquals() {
+    public void givenIdenticalFirstLastNames_whenCompare_thenShouldBeEquals() {
         //Given
         final LastName givenLastName1 = LastName.of( "Fernández" );
         final LastName givenLastName2 = LastName.of( "Fernández" );
@@ -124,7 +124,7 @@ public class LastNameTest {
 // ------------------------------------------------------------------------------------------------------------------ \\
 
     @Test
-    public void givenDiferentFirstLastNameAndSecondLastName_whenCompare_thenShouldBeNotEquals() {
+    public void givenDiferentFirstLastNamesAndSecondLastNames_whenCompare_thenShouldBeNotEquals() {
         //Given
         final LastName givenLastName1 = LastName.of( "Herce", "Fernández" );
         final LastName givenLastName2 = LastName.of( "Fernández", "Herce" );
@@ -137,7 +137,7 @@ public class LastNameTest {
     }
 
     @Test
-    public void givenDiferentFirstLastName_whenCompare_thenShouldBeNotEquals() {
+    public void givenDiferentFirstLastNames_whenCompare_thenShouldBeNotEquals() {
         //Given
         final LastName givenLastName1 = LastName.of( "Herce" );
         final LastName givenLastName2 = LastName.of( "Fernández" );
