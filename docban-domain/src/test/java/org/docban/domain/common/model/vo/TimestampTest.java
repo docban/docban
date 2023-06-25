@@ -61,7 +61,7 @@ public class TimestampTest {
         //Then
         Assertions.assertNotNull( timestamp );
         Assertions.assertTrue( Instant.now().minusMillis( 1000 ).isBefore( timestamp.value() ) );
-        Assertions.assertTrue( Instant.now().isAfter( timestamp.value() ) );
+        Assertions.assertTrue( Instant.now().compareTo( timestamp.value() ) >= 0 );
     }
 
 // ------------------------------------------------------------------------------------------------------------------ \\
