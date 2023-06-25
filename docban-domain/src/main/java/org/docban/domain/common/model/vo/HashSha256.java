@@ -5,6 +5,7 @@ import org.docban.domain.common.base.ValueObject;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
@@ -24,29 +25,13 @@ public class HashSha256 implements ValueObject<String> {
 // -------| CONSTRUCTOR |-------------------------------------------------------------------------------------------- \\
 // ------------------------------------------------------------------------------------------------------------------ \\
 
-    public HashSha256( final String hash ) {
+    private HashSha256( final String hash ) {
         this.hash = hash;
         this.validate();
     }
 
-// ------------------------------------------------------------------------------------------------------------------ \\
-// -------| GETTERS METHODS |---------------------------------------------------------------------------------------- \\
-// ------------------------------------------------------------------------------------------------------------------ \\
-
-    @Override
-    public String value() {
-        return this.hash;
-    }
-
-// ------------------------------------------------------------------------------------------------------------------ \\
-// -------| COMPARATION METHODS |------------------------------------------------------------------------------------ \\
-// ------------------------------------------------------------------------------------------------------------------ \\
-
-    @Override
-    public boolean equals( final Object o ) {
-        if ( o == null || getClass() != o.getClass() ) return false;
-        final HashSha256 target = (HashSha256) o;
-        return Objects.equals( this.hash, target.hash );
+    public static HashSha256 of( final String hash ) {
+        return new HashSha256( hash );
     }
 
 // ------------------------------------------------------------------------------------------------------------------ \\
@@ -84,9 +69,35 @@ public class HashSha256 implements ValueObject<String> {
         return result;
     }
 
+    public static HashSha256 build( final String... data ) {
+        final StringBuilder builder = new StringBuilder();
+        Arrays.stream(data).forEach( builder::append );
+        return HashSha256.build( builder.toString() );
+    }
+
     public static HashSha256 build() {
         final String instant = String.valueOf( System.currentTimeMillis() );
         return HashSha256.build( instant );
+    }
+
+// ------------------------------------------------------------------------------------------------------------------ \\
+// -------| GETTERS METHODS |---------------------------------------------------------------------------------------- \\
+// ------------------------------------------------------------------------------------------------------------------ \\
+
+    @Override
+    public String value() {
+        return this.hash;
+    }
+
+// ------------------------------------------------------------------------------------------------------------------ \\
+// -------| COMPARATION METHODS |------------------------------------------------------------------------------------ \\
+// ------------------------------------------------------------------------------------------------------------------ \\
+
+    @Override
+    public boolean equals( final Object o ) {
+        if ( o == null || getClass() != o.getClass() ) return false;
+        final HashSha256 target = (HashSha256) o;
+        return Objects.equals( this.hash, target.hash );
     }
 
 // ------------------------------------------------------------------------------------------------------------------ \\

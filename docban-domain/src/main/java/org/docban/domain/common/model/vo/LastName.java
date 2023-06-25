@@ -22,18 +22,26 @@ public class LastName implements ValueObject<String> {
 
 // ------------------------------------------------------------------------------------------------------------------ \\
 
-    private String firstName;
-    private Optional<String> secondName;
+    private final String firstName;
+    private final Optional<String> secondName;
     private String value;
 
 // ------------------------------------------------------------------------------------------------------------------ \\
 // -------| CONSTRUCTOR |-------------------------------------------------------------------------------------------- \\
 // ------------------------------------------------------------------------------------------------------------------ \\
 
-    public LastName( final String firstName, final Optional<String> secondName ) {
+    private LastName( final String firstName, final Optional<String> secondName ) {
         this.firstName = firstName;
         this.secondName = secondName;
         this.validate();
+    }
+
+    public static LastName of( final String firstName, final String secondName ) {
+        return new LastName( firstName, Optional.of( secondName ) );
+    }
+
+    public static LastName of( final String firstName ) {
+        return new LastName( firstName, Optional.empty() );
     }
 
 // ------------------------------------------------------------------------------------------------------------------ \\

@@ -22,15 +22,19 @@ public class UserName implements ValueObject<String> {
 
 // ------------------------------------------------------------------------------------------------------------------ \\
 
-    private String userName;
+    private final String userName;
 
 // ------------------------------------------------------------------------------------------------------------------ \\
 // -------| CONSTRUCTOR |-------------------------------------------------------------------------------------------- \\
 // ------------------------------------------------------------------------------------------------------------------ \\
 
-    public UserName( final String userName ) {
+    private UserName( final String userName ) {
         this.userName = userName;
         this.validate();
+    }
+
+    public static UserName of( final String userName ) {
+        return new UserName( userName );
     }
 
 // ------------------------------------------------------------------------------------------------------------------ \\
@@ -39,6 +43,10 @@ public class UserName implements ValueObject<String> {
 
     @Override
     public String value(){
+        return this.userName;
+    }
+
+    public String valueAsString(){
         return this.userName;
     }
 
