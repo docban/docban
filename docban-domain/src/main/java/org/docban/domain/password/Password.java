@@ -3,10 +3,9 @@ package org.docban.domain.password;
 import lombok.Getter;
 import lombok.ToString;
 import org.docban.domain.common.base.Entity;
-import org.docban.domain.common.util.event.EventDomainHandler;
-import org.docban.domain.common.util.timestamp.TimestampBuilder;
 import org.docban.domain.common.model.vo.HashSha256;
-import org.docban.domain.common.model.vo.UUID;
+import org.docban.domain.common.model.vo.Timestamp;
+import org.docban.domain.common.util.event.EventDomainHandler;
 import org.docban.domain.password.event.CreateNewPasswordEvent;
 import org.docban.domain.password.vo.PasswordId;
 import org.docban.domain.password.vo.PasswordSalt;
@@ -28,29 +27,28 @@ public class Password implements Entity {
      * La constraseña debe contener al menos 8 caracteres, una mayúscula, una minúscula, un número y un caracter especial.
      */
     private static final Pattern PATTERN = Pattern.compile( "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$" );
-    private static final String TEMPLATE_PASS_BUILD = "%s%s";
 
 // ------------------------------------------------------------------------------------------------------------------ \\
     private PasswordId id;
-    private UserId owner;
+    private UserId ownerId;
     private HashSha256 password;
     private PasswordSalt salt;
-    private LocalDateTime creationDate;
+    private Timestamp creationDate;
 
 // ------------------------------------------------------------------------------------------------------------------ \\
 // -------| CONSTRUCTOR |-------------------------------------------------------------------------------------------- \\
 // ------------------------------------------------------------------------------------------------------------------ \\
 
-    public Password( final UserId owner, final String password ) {
+    public Password( final UserId ownerId, final PasswordSalt salt, final String password ) {
         //Validate Password
         this.validatePasswordFormat( password );
 
         //Set Data
-        this.id = new PasswordId( UUID.build().value() );
-        this.owner = owner;
-        this.salt = new PasswordSalt( UUID.build().value() );
-        this.password = this.buildPassword( password, this.salt );
-        this.creationDate = TimestampBuilder.now();
+        this.id = PasswordId.build();
+        this.ownerId = ownerId;
+        this.salt = salt;
+        this.password = HashSha256.build( password, this.salt.valueAsString() );
+        this.creationDate = Timestamp.build();
 
         //Validate data
         this.validate();
@@ -70,17 +68,9 @@ public class Password implements Entity {
         return Objects.equals( this.id, target.id );
     }
 
-    public boolean equals( final String target ) {
-        if ( target == null ) return false;
-        return Objects.equals( this.password, this.buildPassword( target, this.salt ) );
-    }
-
-// ------------------------------------------------------------------------------------------------------------------ \\
-// -------| BUILDER METHODS |---------------------------------------------------------------------------------------- \\
-// ------------------------------------------------------------------------------------------------------------------ \\
-
-    private HashSha256 buildPassword( final String password, final PasswordSalt salt ){
-        return HashSha256.build( String.format( Password.TEMPLATE_PASS_BUILD, password, salt.value() ) );
+    public boolean equals( final String password ) {
+        if ( password == null ) return false;
+        return Objects.equals( this.password, HashSha256.build( password, this.salt.valueAsString() ) );
     }
 
 // ------------------------------------------------------------------------------------------------------------------ \\
@@ -89,11 +79,10 @@ public class Password implements Entity {
 
     private void validate(){
         if( this.id == null ) throw new IllegalArgumentException( "La id de la contraseña no puede ser nula" );
-        if( this.owner == null ) throw new IllegalArgumentException( "La id del usuario no puede ser nulo" );
+        if( this.ownerId == null ) throw new IllegalArgumentException( "La id del usuario no puede ser nulo" );
         if( this.password == null ) throw new IllegalArgumentException( "La contraseña no puede ser nula" );
         if( this.salt == null ) throw new IllegalArgumentException( "La sal de la contraseña no puede ser nula" );
         if( this.creationDate == null ) throw new IllegalArgumentException( "La fecha de creación de la contraseña no puede ser nula" );
-        if( this.creationDate.isAfter( ZonedDateTime.now().toLocalDateTime() )) throw new IllegalArgumentException( "La fecha de creación de la contraseña no puede ser posterior a la fecha actual" );
     }
 
     private void validatePasswordFormat( final String target ){

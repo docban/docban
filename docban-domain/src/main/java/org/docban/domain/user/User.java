@@ -1,14 +1,14 @@
 package org.docban.domain.user;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
 import org.docban.domain.common.base.Entity;
+import org.docban.domain.common.model.vo.Timestamp;
 import org.docban.domain.common.util.event.EventDomainHandler;
-import org.docban.domain.common.util.timestamp.TimestampBuilder;
 import org.docban.domain.common.model.vo.Email;
 import org.docban.domain.common.model.vo.LastName;
 import org.docban.domain.common.model.vo.Name;
-import org.docban.domain.common.model.vo.UUID;
 import org.docban.domain.user.event.CreateNewUserEvent;
 import org.docban.domain.user.vo.UserId;
 import org.docban.domain.user.vo.UserName;
@@ -19,6 +19,7 @@ import java.time.ZonedDateTime;
 import java.util.Objects;
 import java.util.Optional;
 
+@AllArgsConstructor
 @Getter
 @ToString
 public class User implements Entity {
@@ -32,21 +33,21 @@ public class User implements Entity {
     private Name name;
     private Optional<LastName> lastName;
     private LocalDate birthDate;
-    private LocalDateTime creationDate;
+    private Timestamp creationDate;
 
 // ------------------------------------------------------------------------------------------------------------------ \\
 // -------| CONSTRUCTOR |-------------------------------------------------------------------------------------------- \\
 // ------------------------------------------------------------------------------------------------------------------ \\
 
-    public User( final String username, final String email, final String name, final String firstLastName, final Optional<String> secondLastName, final LocalDate birthDate ) {
+    public User( final UserName username, final Email email, final Name name, final LastName lastName, final LocalDate birthDate ) {
         //Set Data
-        this.id = new UserId( UUID.build().value() );
-        this.username = new UserName( username );
-        this.email = new Email( email );
-        this.name = new Name( name );
-        this.lastName = Optional.of( new LastName( firstLastName, secondLastName ) );
+        this.id = UserId.build();
+        this.username = username;
+        this.email = email;
+        this.name = name;
+        this.lastName = Optional.of( lastName );
         this.birthDate = birthDate;
-        this.creationDate = TimestampBuilder.now();
+        this.creationDate = Timestamp.build();
 
         //Validate data
         this.validate();
@@ -55,15 +56,15 @@ public class User implements Entity {
         EventDomainHandler.trigger( new CreateNewUserEvent( this ) );
     }
 
-    public User( final String username, final String email, final String name, final LocalDate birthDate ) {
+    public User( final UserName username, final Email email, final Name name, final LocalDate birthDate ) {
         //Set Data
-        this.id = new UserId( UUID.build().value() );
-        this.username = new UserName( username );
-        this.email = new Email( email );
-        this.name = new Name( name );
+        this.id = UserId.build();
+        this.username = username;
+        this.email = email;
+        this.name = name;
         this.lastName = Optional.empty();
         this.birthDate = birthDate;
-        this.creationDate = TimestampBuilder.now();
+        this.creationDate = Timestamp.build();
 
         //Validate data
         this.validate();
@@ -95,7 +96,6 @@ public class User implements Entity {
         if( this.birthDate == null ) throw new IllegalArgumentException( "La fecha de nacimiento no puede ser nula" );
         if( this.birthDate.isAfter( LocalDate.now().minusYears( 18 ) ) ) throw new IllegalArgumentException( "El usuario debe ser mayor de edad" );
         if( this.creationDate == null ) throw new IllegalArgumentException( "La fecha de creación de la contraseña no puede ser nula" );
-        if( this.creationDate.isAfter( ZonedDateTime.now().toLocalDateTime() )) throw new IllegalArgumentException( "La fecha de creación de la contraseña no puede ser posterior a la fecha actual" );
     }
 
 // ------------------------------------------------------------------------------------------------------------------ \\
