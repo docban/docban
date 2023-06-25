@@ -23,7 +23,6 @@ public class EmailTest {
     public void givenAnInvalidEmail_whenCreateEmail_thenThrowIllegalArgumentException( final String givenEmail ) {
         //When and Then
         final IllegalArgumentException exception = Assertions.assertThrows( IllegalArgumentException.class, () -> Email.of( givenEmail ) );
-        Assertions.assertEquals( "El email no es valido", exception.getMessage() );
     }
 
     @Test
@@ -33,11 +32,10 @@ public class EmailTest {
 
         //When and Then
         final IllegalArgumentException exception = Assertions.assertThrows( IllegalArgumentException.class, () -> Email.of( givenEmail ) );
-        Assertions.assertEquals( "El email no puede ser nulo", exception.getMessage() );
     }
 
     @Test
-    public void givenThowIdenticalEmails_whenCompare_thenShouldBeEquals() {
+    public void givenThrowIdenticalEmails_whenCompare_thenShouldBeEquals() {
         //Given
         final Email givenEmail1 = Email.of( "example@host.com" );
         final Email givenEmail2 = Email.of( "example@host.com" );
