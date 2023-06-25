@@ -12,13 +12,6 @@ public class Timestamp implements ValueObject<Instant> {
 
     private static final Long serialVersionUID = 1L;
 
-    /**
-     * Regex para validar un nombre.
-     * El nombre debe empezar con 2 letras, puede contener letras, espacios y/o guiones, y debe terminar con una letra.
-     * El nombre no puede tener más de 100 caracteres.
-     */
-    public static final String REGEX = "^\\w{2}[\\w\\s-]{98}\\w$";
-
 // ------------------------------------------------------------------------------------------------------------------ \\
 
     private final Instant timestamp;

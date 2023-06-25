@@ -11,7 +11,7 @@ public class Email implements ValueObject<String> {
     private static final Long serialVersionUID = 1L;
 
     /** Regex para validar un email */
-    public static final String REGEX = "^[\\w.+-]+@[\\w-]+\\.[\\w-.]+$";
+    public static final String PATTERN = "^[\\w.+-]+@[\\w-]+\\.[\\w-.]+$";
 
 // ------------------------------------------------------------------------------------------------------------------ \\
 
@@ -55,7 +55,7 @@ public class Email implements ValueObject<String> {
 
     private void validate(){
         if( this.email == null ) throw new IllegalArgumentException( "El email no puede ser nulo" );
-        if( !this.email.matches( REGEX ) ) throw new IllegalArgumentException( "El email no es valido" );
+        if( !this.email.matches(PATTERN) ) throw new IllegalArgumentException( "El email no es valido" );
     }
 
 // ------------------------------------------------------------------------------------------------------------------ \\

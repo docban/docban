@@ -15,7 +15,7 @@ public class Name implements ValueObject<String> {
      * El nombre debe empezar con 2 letras, puede contener letras, espacios y/o guiones, y debe terminar con una letra.
      * El nombre no puede tener más de 100 caracteres.
      */
-    public static final String REGEX = "^[a-zA-ZáéíóúÁÉÍÓÚàèìòùÀÈÌÒÙâêîôûÂÊÎÔÛ]{2}[\\sa-zA-Z-áéíóúÁÉÍÓÚàèìòùÀÈÌÒÙâêîôûÂÊÎÔÛ]{0,98}$";
+    public static final String PATTERN = "^[a-zA-ZáéíóúÁÉÍÓÚàèìòùÀÈÌÒÙâêîôûÂÊÎÔÛ]{2}[\\sa-zA-Z-áéíóúÁÉÍÓÚàèìòùÀÈÌÒÙâêîôûÂÊÎÔÛ]{0,98}$";
     public static final int MIN_LENGTH = 2;
     public static final int MAX_LENGTH = 100;
 
@@ -64,7 +64,7 @@ public class Name implements ValueObject<String> {
         if( this.name == null ) throw new IllegalArgumentException( "El nombre no puede ser nulo" );
         if( this.name.length() < MIN_LENGTH ) throw new IllegalArgumentException( String.format( "El nombre no puede tener menos de %d caracteres", MIN_LENGTH ) );
         if( this.name.length() > MAX_LENGTH ) throw new IllegalArgumentException( String.format( "El nombre no puede tener mas de %d caracteres", MAX_LENGTH ) );
-        if( !this.name.matches( REGEX ) ) throw new IllegalArgumentException( "El nombre no es valido" );
+        if( !this.name.matches(PATTERN) ) throw new IllegalArgumentException( "El nombre no es valido" );
     }
 
 // ------------------------------------------------------------------------------------------------------------------ \\
