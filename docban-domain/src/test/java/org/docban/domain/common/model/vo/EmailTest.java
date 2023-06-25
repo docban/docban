@@ -35,7 +35,7 @@ public class EmailTest {
     }
 
     @Test
-    public void givenThrowIdenticalEmails_whenCompare_thenShouldBeEquals() {
+    public void givenIdenticalEmails_whenCompare_thenShouldBeEquals() {
         //Given
         final Email givenEmail1 = Email.of( "example@host.com" );
         final Email givenEmail2 = Email.of( "example@host.com" );
@@ -45,5 +45,18 @@ public class EmailTest {
 
         //Then
         Assertions.assertTrue( result );
+    }
+
+    @Test
+    public void givenDiferentEmails_whenCompare_thenShouldBeEquals() {
+        //Given
+        final Email givenEmail1 = Email.of( "example@host.com" );
+        final Email givenEmail2 = Email.of( "example@host.es" );
+
+        //When
+        final boolean result = givenEmail1.equals( givenEmail2 );
+
+        //Then
+        Assertions.assertFalse( result );
     }
 }
