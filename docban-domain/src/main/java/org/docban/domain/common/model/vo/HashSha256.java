@@ -1,5 +1,6 @@
 package org.docban.domain.common.model.vo;
 
+import lombok.SneakyThrows;
 import lombok.ToString;
 import org.docban.domain.common.base.ValueObject;
 
@@ -38,33 +39,30 @@ public class HashSha256 implements ValueObject<String> {
 // -------| BUILDER METHODS |---------------------------------------------------------------------------------------- \\
 // ------------------------------------------------------------------------------------------------------------------ \\
 
-    public static HashSha256 build( final String target ) {
+    @SneakyThrows( NoSuchAlgorithmException.class)
+    public static HashSha256 build(final String target ) {
         HashSha256 result = null;
 
-        try {
-            // Crear una instancia de MessageDigest con el algoritmo SHA-256
-            final MessageDigest digest = MessageDigest.getInstance("SHA-256" );
+        // Crear una instancia de MessageDigest con el algoritmo SHA-256
+        final MessageDigest digest = MessageDigest.getInstance("SHA-256" );
 
-            // Obtener el arreglo de bytes del valor a hashear
-            final byte[] inputBytes = target.getBytes();
+        // Obtener el arreglo de bytes del valor a hashear
+        final byte[] inputBytes = target.getBytes();
 
-            // Calcular el hash
-            final byte[] hashBytes = digest.digest( inputBytes );
+        // Calcular el hash
+        final byte[] hashBytes = digest.digest( inputBytes );
 
-            // Convertir los bytes del hash a una representación hexadecimal
-            final StringBuilder hexString = new StringBuilder();
-            for ( final byte hashByte : hashBytes ) {
-                final String hex = Integer.toHexString(0xff & hashByte);
-                if ( hex.length() == 1 ) {
-                    hexString.append( '0' );
-                }
-                hexString.append( hex );
+        // Convertir los bytes del hash a una representación hexadecimal
+        final StringBuilder hexString = new StringBuilder();
+        for ( final byte hashByte : hashBytes ) {
+            final String hex = Integer.toHexString(0xff & hashByte);
+            if ( hex.length() == 1 ) {
+                hexString.append( '0' );
             }
-
-            result = new HashSha256( hexString.toString() );
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
+            hexString.append( hex );
         }
+
+        result = new HashSha256( hexString.toString() );
 
         return result;
     }
