@@ -15,7 +15,7 @@ public class Name implements ValueObject<String> {
      * El nombre debe empezar con 2 letras, puede contener letras, espacios y/o guiones, y debe terminar con una letra.
      * El nombre no puede tener más de 100 caracteres.
      */
-    public static final String REGEX = "^\\w{2}[\\w\\s-]{98}\\w$";
+    public static final String REGEX = "^[a-zA-ZáéíóúÁÉÍÓÚàèìòùÀÈÌÒÙâêîôûÂÊÎÔÛ]{2}[\\sa-zA-Z-áéíóúÁÉÍÓÚàèìòùÀÈÌÒÙâêîôûÂÊÎÔÛ]{0,98}$";
     public static final int MIN_LENGTH = 2;
     public static final int MAX_LENGTH = 100;
 
