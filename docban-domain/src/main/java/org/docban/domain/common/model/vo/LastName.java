@@ -16,9 +16,14 @@ public class LastName implements ValueObject<String> {
      * El apellido debe empezar con 2 letras, puede contener letras, espacios y/o guiones, y debe terminar con una letra.
      * El apellido no puede tener más de 200 caracteres.
      */
-    public static final String PATTERN = "^\\w{2}[\\w\\s-]{197}\\w$";
+    public static final String PATTERN = "^[a-zA-ZáéíóúÁÉÍÓÚàèìòùÀÈÌÒÙâêîôûÂÊÎÔÛ]{2}[\\sa-zA-Z-áéíóúÁÉÍÓÚàèìòùÀÈÌÒÙâêîôûÂÊÎÔÛ]{0,198}$";
+
+    /** Regex para validar un Apellido individualmente. */
+    public static final String PATTERN_NAME = Name.PATTERN;
     public static final int MIN_LENGTH = 2;
+    public static final int MIN_LENGTH_NAME = Name.MIN_LENGTH;
     public static final int MAX_LENGTH = 200;
+    public static final int MAX_LENGTH_NAME = Name.MAX_LENGTH;
 
 // ------------------------------------------------------------------------------------------------------------------ \\
 
@@ -81,10 +86,20 @@ public class LastName implements ValueObject<String> {
 // ------------------------------------------------------------------------------------------------------------------ \\
 
     private void validate(){
-        if( this.value == null ) throw new IllegalArgumentException( "El apellido no puede ser nulo" );
-        if( this.value.length() < MIN_LENGTH ) throw new IllegalArgumentException( String.format( "El apellido no puede tener menos de %d caracteres", MIN_LENGTH ) );
-        if( this.value.length() > MAX_LENGTH ) throw new IllegalArgumentException( String.format( "El apellido no puede tener mas de %d caracteres", MAX_LENGTH ) );
-        if( !this.value.matches(PATTERN) ) throw new IllegalArgumentException( "El apellido no es valido" );
+        if( this.firstName == null ) throw new IllegalArgumentException( "El primer apellido no puede ser nulo" );
+        if( this.value() == null ) throw new IllegalArgumentException( "El apellido no puede ser nulo" );
+
+        if( this.firstName.length() < MIN_LENGTH_NAME ) throw new IllegalArgumentException( String.format( "El primer apellido no puede tener menos de %d caracteres", MIN_LENGTH_NAME ) );
+        if( this.secondName.isPresent() && this.secondName.get().length() < MIN_LENGTH_NAME ) throw new IllegalArgumentException( String.format( "El segundo apellido no puede tener menos de %d caracteres", MIN_LENGTH_NAME ) );
+        if( this.value().length() < MIN_LENGTH ) throw new IllegalArgumentException( String.format( "El apellido no puede tener menos de %d caracteres", MIN_LENGTH ) );
+
+        if( this.firstName.length() > MAX_LENGTH_NAME ) throw new IllegalArgumentException( String.format( "El primer apellido no puede tener mas de %d caracteres", MAX_LENGTH_NAME ) );
+        if( this.secondName.isPresent() && this.secondName.get().length() > MAX_LENGTH_NAME ) throw new IllegalArgumentException( String.format( "El segundo apellido no puede tener mas de %d caracteres", MAX_LENGTH_NAME ) );
+        if( this.value().length() > MAX_LENGTH ) throw new IllegalArgumentException( String.format( "El apellido no puede tener mas de %d caracteres", MAX_LENGTH ) );
+
+        if( !this.firstName.matches( PATTERN_NAME ) ) throw new IllegalArgumentException( "El primer apellido no es valido" );
+        if( this.secondName.isPresent() && !this.secondName.get().matches( PATTERN_NAME ) ) throw new IllegalArgumentException( "El segundo apellido no es valido" );
+        if( !this.value().matches(PATTERN) ) throw new IllegalArgumentException( "El apellido no es valido" );
     }
 
 // ------------------------------------------------------------------------------------------------------------------ \\
