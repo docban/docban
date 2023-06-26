@@ -7,7 +7,11 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 public class NameTest {
 
-    @ParameterizedTest(name = "Name: {0}")
+// ------------------------------------------------------------------------------------------------------------------ \\
+// -------| CORRECT CREATION |--------------------------------------------------------------------------------------- \\
+// ------------------------------------------------------------------------------------------------------------------ \\
+
+    @ParameterizedTest(name = "Name = {0}")
     @ValueSource( strings = { "Ángel", "Patricia", "María del Carmen", "Juan-Carlos" })
     public void givenAnValidName_whenCreateName_thenShouldCreateNewName( final String givenName ) {
         //When
@@ -18,8 +22,18 @@ public class NameTest {
         Assertions.assertEquals( givenName, name.value() );
     }
 
-    @ParameterizedTest(name = "Name: {0}")
-    @ValueSource( strings = { "Ángel123", "Patricia.mola", " María", "A", "María-Josefa-Antonietta-Isabella-Cristina-Giorgina-Francisca-Gabriella-Carolina-Inés-Teresa-Avila-Cecilia" })
+// ------------------------------------------------------------------------------------------------------------------ \\
+// -------| INCORRECT CREATION |------------------------------------------------------------------------------------- \\
+// ------------------------------------------------------------------------------------------------------------------ \\
+
+    @ParameterizedTest(name = "Name = {0}")
+    @ValueSource( strings = {
+            "Ángel123",
+            "Patricia.mola",
+            " María",
+            "A",
+            "María-Josefa-Antonietta-Isabella-Cristina-Giorgina-Francisca-Gabriella-Carolina-Inés-Teresa-Avila-Cecilia"
+    })
     public void givenAnInvalidName_whenCreateName_thenThrowIllegalArgumentException( final String givenName ) {
         //When and Then
         final IllegalArgumentException exception = Assertions.assertThrows( IllegalArgumentException.class, () -> Name.of( givenName ) );
@@ -34,8 +48,12 @@ public class NameTest {
         final IllegalArgumentException exception = Assertions.assertThrows( IllegalArgumentException.class, () -> Name.of( givenName ) );
     }
 
+// ------------------------------------------------------------------------------------------------------------------ \\
+// -------| EQUALS COMPARATION |------------------------------------------------------------------------------------- \\
+// ------------------------------------------------------------------------------------------------------------------ \\
+
     @Test
-    public void givenThrowIdenticalName_whenCompare_thenShouldBeEquals() {
+    public void givenIdenticalName_whenCompare_thenShouldBeEquals() {
         //Given
         final Name givenName1 = Name.of( "Pepe" );
         final Name givenName2 = Name.of( "Pepe" );
@@ -46,4 +64,24 @@ public class NameTest {
         //Then
         Assertions.assertTrue( result );
     }
+
+// ------------------------------------------------------------------------------------------------------------------ \\
+// -------| NOT EQUALS COMPARATION |--------------------------------------------------------------------------------- \\
+// ------------------------------------------------------------------------------------------------------------------ \\
+
+    @Test
+    public void givenDiferentName_whenCompare_thenShouldBeNotEquals() {
+        //Given
+        final Name givenName1 = Name.of( "Pepe" );
+        final Name givenName2 = Name.of( "Josefina" );
+
+        //When
+        final boolean result = givenName1.equals( givenName2 );
+
+        //Then
+        Assertions.assertFalse( result );
+    }
+
+// ------------------------------------------------------------------------------------------------------------------ \\
+
 }

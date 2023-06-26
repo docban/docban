@@ -1,45 +1,54 @@
-package org.docban.domain.common.model.vo;
+package org.docban.domain.user.vo;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-public class EmailTest {
+public class UserNameTest {
 
 // ------------------------------------------------------------------------------------------------------------------ \\
 // -------| CORRECT CREATION |--------------------------------------------------------------------------------------- \\
 // ------------------------------------------------------------------------------------------------------------------ \\
 
-    @ParameterizedTest(name = "Email = {0}")
-    @ValueSource( strings = { "example@host.com", "example_123@host.com", "EXAMPLE_123@HOST.COM" })
-    public void givenAnValidEmail_whenCreateEmail_thenShouldCreateNewEmail( final String givenEmail ) {
+    @ParameterizedTest(name = "UserName = {0}")
+    @ValueSource( strings = { "superpepe", "pepe123", "pepe_123", "pepe_pepi", "pepe-123", "pep" })
+    public void givenAnValidUserName_whenCreateUserName_thenShouldCreateNewUserName( final String givenUserName ) {
         //When
-        final Email email = Email.of( givenEmail );
+        final UserName userName = UserName.of( givenUserName );
 
         //Then
-        Assertions.assertNotNull(email);
-        Assertions.assertEquals( givenEmail, email.value() );
+        Assertions.assertNotNull( userName );
+        Assertions.assertEquals( givenUserName, userName.value() );
     }
 
 // ------------------------------------------------------------------------------------------------------------------ \\
 // -------| INCORRECT CREATION |------------------------------------------------------------------------------------- \\
 // ------------------------------------------------------------------------------------------------------------------ \\
 
-    @ParameterizedTest(name = "Email = {0}")
-    @ValueSource( strings = { "example", "example @host.com", "example@host", "example@exa@host.com" })
-    public void givenAnInvalidEmail_whenCreateEmail_thenThrowIllegalArgumentException( final String givenEmail ) {
+    @ParameterizedTest(name = "UserName = {0}")
+    @ValueSource( strings = {
+            "Ángel123",
+            "pepe@pepe",
+            " pepe",
+            "pepe a",
+            "123456asda",
+            "p",
+            "pe",
+            "as12a56sdaas12a56sdaas12a56sdaas12a56sdaas12a56sdaas12a56sdaasrat"
+    })
+    public void givenAnInvalidUserName_whenCreateUserName_thenThrowIllegalArgumentException( final String givenUserName ) {
         //When and Then
-        final IllegalArgumentException exception = Assertions.assertThrows( IllegalArgumentException.class, () -> Email.of( givenEmail ) );
+        final IllegalArgumentException exception = Assertions.assertThrows( IllegalArgumentException.class, () -> UserName.of( givenUserName ) );
     }
 
     @Test
-    public void givenAnNullEmail_whenCreateEmail_thenThrowIllegalArgumentException() {
+    public void givenANullUserName_whenCreateUserName_thenThrowIllegalArgumentException() {
         //Given
-        final String givenEmail = null;
+        final String givenUserName = null;
 
         //When and Then
-        final IllegalArgumentException exception = Assertions.assertThrows( IllegalArgumentException.class, () -> Email.of( givenEmail ) );
+        final IllegalArgumentException exception = Assertions.assertThrows( IllegalArgumentException.class, () -> UserName.of( givenUserName ) );
     }
 
 // ------------------------------------------------------------------------------------------------------------------ \\
@@ -47,13 +56,13 @@ public class EmailTest {
 // ------------------------------------------------------------------------------------------------------------------ \\
 
     @Test
-    public void givenIdenticalEmails_whenCompare_thenShouldBeEquals() {
+    public void givenIdenticalUserName_whenCompare_thenShouldBeEquals() {
         //Given
-        final Email givenEmail1 = Email.of( "example@host.com" );
-        final Email givenEmail2 = Email.of( "example@host.com" );
+        final UserName givenUserName1 = UserName.of( "Pepe" );
+        final UserName givenUserName2 = UserName.of( "Pepe" );
 
         //When
-        final boolean result = givenEmail1.equals( givenEmail2 );
+        final boolean result = givenUserName1.equals( givenUserName2 );
 
         //Then
         Assertions.assertTrue( result );
@@ -64,13 +73,13 @@ public class EmailTest {
 // ------------------------------------------------------------------------------------------------------------------ \\
 
     @Test
-    public void givenDiferentEmails_whenCompare_thenShouldBeEquals() {
+    public void givenDiferentUserName_whenCompare_thenShouldBeNotEquals() {
         //Given
-        final Email givenEmail1 = Email.of( "example@host.com" );
-        final Email givenEmail2 = Email.of( "example@host.es" );
+        final UserName givenUserName1 = UserName.of( "Pepe" );
+        final UserName givenUserName2 = UserName.of( "Josefina" );
 
         //When
-        final boolean result = givenEmail1.equals( givenEmail2 );
+        final boolean result = givenUserName1.equals( givenUserName2 );
 
         //Then
         Assertions.assertFalse( result );

@@ -1,13 +1,10 @@
 package org.docban.domain.password.vo;
 
-import lombok.ToString;
 import org.docban.domain.common.base.ValueObject;
 import org.docban.domain.common.model.vo.HashSha256;
 
 import java.util.Objects;
-import java.util.UUID;
 
-@ToString
 public class PasswordSalt implements ValueObject<HashSha256> {
 
     private static final Long serialVersionUID = 1L;

@@ -1,11 +1,9 @@
 package org.docban.domain.common.model.vo;
 
-import lombok.ToString;
 import org.docban.domain.common.base.ValueObject;
 
 import java.util.Objects;
 
-@ToString
 public class Email implements ValueObject<String> {
 
     private static final Long serialVersionUID = 1L;
@@ -29,6 +27,7 @@ public class Email implements ValueObject<String> {
     public static Email of( final String email ) {
         return new Email( email );
     }
+
 // ------------------------------------------------------------------------------------------------------------------ \\
 // -------| GETTERS METHODS |---------------------------------------------------------------------------------------- \\
 // ------------------------------------------------------------------------------------------------------------------ \\

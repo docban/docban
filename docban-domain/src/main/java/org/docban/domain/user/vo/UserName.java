@@ -1,12 +1,10 @@
 package org.docban.domain.user.vo;
 
-import lombok.ToString;
 import org.docban.domain.common.base.ValueObject;
 
 import java.util.Objects;
 import java.util.regex.Pattern;
 
-@ToString
 public class UserName implements ValueObject<String> {
 
     private static final long serialVersionUID = 1L;
@@ -16,7 +14,7 @@ public class UserName implements ValueObject<String> {
      * El username debe empezar con una letra, debe tener al menos 3 caracteres y puede contener letras, numeros,
      * guiones y guiones bajos.
      */
-    public static final Pattern PATTERN = Pattern.compile( "^\\w{1}[\\w\\d_-]{2,64}$" );
+    public static final Pattern PATTERN = Pattern.compile( "^[a-zA-Z]{1}[\\w\\d_-]{2,64}$" );
     public static final int MIN_LENGTH = 3;
     public static final int MAX_LENGTH = 64;
 
@@ -43,10 +41,6 @@ public class UserName implements ValueObject<String> {
 
     @Override
     public String value(){
-        return this.userName;
-    }
-
-    public String valueAsString(){
         return this.userName;
     }
 

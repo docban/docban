@@ -16,31 +16,32 @@ El formato está basado en [Keep a Changelog](https://keepachangelog.com/en/1.1.
 
 ### ADDED ✔️
 
----
-
 - `CI/ID` - **Nuevo Workflow de GitHub de SonarCloud**: _Se ha añadido un nuevo workflow de GitHub para analizar el código con SonarCloud._
-
----
+  
 
 - `DOMAIN` - **Nuevos tests unitarios**: _Se han añadido nuevos tests unitarios`._
-  - _Se ha añadido los tests unitarios para el **ValueObject** de `Email`._ 
-  - _Se ha añadido los tests unitarios para el **ValueObject** de `Name`._ 
+  - _Se han añadido los tests unitarios para el **ValueObject** de `Email`._ 
+  - _Se han añadido los tests unitarios para el **ValueObject** de `Name`._ 
+  - _Se han añadido los tests unitarios para el **ValueObject** de `LastName`._ 
+  - _Se han añadido los tests unitarios para el **ValueObject** de `Timestamp`._ 
+  - _Se han añadido los tests unitarios para el **ValueObject** de `HashSha256`._
+  - _Se han añadido los tests unitarios para el **ValueObject** de `UserId` de la entidad `User`._ 
+  - _Se han añadido los tests unitarios para el **ValueObject** de `UserName` de la entidad `User`._ 
+  - _Se han añadido los tests unitarios para el **ValueObject** de `PasswordId` de la entidad `Password`._ 
+  - _Se han añadido los tests unitarios para el **ValueObject** de `PasswordSalt` de la entidad `Password`._ 
 
----
 
 - `DOMAIN` - **Nueva Entidad `Password`**: _Se ha añadido la entidad Password en la capa de dominio._
   - _Se han creado los **ValueObjects** necesarios para la entidad `Password` (`PasswordId` y `PasswordSalt`)._
   - _Se ha creado el evento de dominio para la creación de la entidad `Password` (`CreateNewPasswordEvent`)._
   - _Se ha creado la factoría que nos permite crear una entidad `Password` con datos primitivos._
-
----
+   
 
 - `DOMAIN` - **Nueva Entidad `User`**: _Se ha añadido la entidad `User` en la capa de dominio._
   - _Se han creado los **ValueObjects** necesarios para la entidad `User` (`UserId` y `UserName`)._
   - _Se ha creado el evento de dominio para la creación de la entidad `User` (`CreateNewUserEvent`)._
   - _Se ha creado la factoría que nos permite crear una entidad `User` con datos primitivos._
-
----
+  
 
 - `DOMAIN` - **Nuevos ValueObjects**: _Se ha añadido nuevos **ValueObjects** para todas las entidades de dominio._
   - _Se ha creado el **ValueObject** para el `Email`._
@@ -48,12 +49,10 @@ El formato está basado en [Keep a Changelog](https://keepachangelog.com/en/1.1.
   - _Se ha creado el **ValueObject** para el `LastName`_
   - _Se ha creado el **ValueObject** para el `HashSha256`._
   - _Se ha creado el **ValueObject** para el `Timestamp`._
-
----
+  
 
 - `DOMAIN` - **Clase de Utilidades `EventHandler`**: _Se ha añadido una clase de utilidades en la capa de dominio que nos permite lanzar eventos, y crear eventos y listeners de dominio._
-
----
+  
 
 - `DOMAIN` - **Nuevas clases base**: _Se han añadido algunas clases para representar varios elementos en la capa de dominio._
   - _Se ha creado la **interfaz** para representar un **ValueObject**._

@@ -1,13 +1,11 @@
 package org.docban.domain.common.model.vo;
 
-import lombok.ToString;
 import org.docban.domain.common.base.ValueObject;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-@ToString
 public class Timestamp implements ValueObject<Instant> {
 
     private static final Long serialVersionUID = 1L;
