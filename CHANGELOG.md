@@ -23,6 +23,7 @@ El formato está basado en [Keep a Changelog](https://keepachangelog.com/en/1.1.
 ---
 
 - `DOMAIN` - **Nuevos tests unitarios**: _Se han añadido nuevos tests unitarios`._
+  - _Se han añadido los tests unitarios para la clase de utilidad `EventDomainHandler`._ 
   - _Se ha añadido los tests unitarios para el **ValueObject** de `Email`._ 
   - _Se ha añadido los tests unitarios para el **ValueObject** de `Name`._ 
 
