@@ -24,9 +24,10 @@ El formato está basado en [Keep a Changelog](https://keepachangelog.com/en/1.1.
   - _Se han añadido los tests unitarios para el **ValueObject** de `Name`._ 
   - _Se han añadido los tests unitarios para el **ValueObject** de `LastName`._ 
   - _Se han añadido los tests unitarios para el **ValueObject** de `Timestamp`._ 
-  - _Se han añadido los tests unitarios para el **ValueObject** de `UserId` de la entidad `User`._ 
-  - _Se han añadido los tests unitarios para el **ValueObject** de `PasswordSalt` de la entidad `Password`._ 
   - _Se han añadido los tests unitarios para el **ValueObject** de `HashSha256`._
+  - _Se han añadido los tests unitarios para el **ValueObject** de `UserId` de la entidad `User`._ 
+  - _Se han añadido los tests unitarios para el **ValueObject** de `PasswordId` de la entidad `Password`._ 
+  - _Se han añadido los tests unitarios para el **ValueObject** de `PasswordSalt` de la entidad `Password`._ 
 
 
 - `DOMAIN` - **Nueva Entidad `Password`**: _Se ha añadido la entidad Password en la capa de dominio._
