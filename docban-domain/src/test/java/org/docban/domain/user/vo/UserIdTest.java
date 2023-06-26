@@ -12,7 +12,7 @@ public class UserIdTest {
 // ------------------------------------------------------------------------------------------------------------------ \\
 
     @Test
-    public void givenAValidUUIDAsString_whenCreateUserId_thenShouldCreateNewUserId() {
+    public void givenAValidIdAsString_whenCreateUserId_thenShouldCreateNewUserId() {
         //Given
         final String givenUUID = "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11";
 
@@ -25,7 +25,7 @@ public class UserIdTest {
     }
 
     @Test
-    public void givenAValidUUID_whenCreateUserId_thenShouldCreateNewUserId() {
+    public void givenAValidIdAsUUID_whenCreateUserId_thenShouldCreateNewUserId() {
         //Given
         final UUID givenUUID = UUID.randomUUID();
 
@@ -42,7 +42,7 @@ public class UserIdTest {
 // ------------------------------------------------------------------------------------------------------------------ \\
 
     @Test
-    public void givenAnInvalidUUIDAsString_whenCreateUserId_thenThrowIllegalArgumentException() {
+    public void givenAnInvalidIdAsString_whenCreateUserId_thenThrowIllegalArgumentException() {
         //Given
         final String givenUUID = "uuid";
 
@@ -51,7 +51,7 @@ public class UserIdTest {
     }
 
     @Test
-    public void givenANullUUID_whenCreateUserId_thenThrowIllegalArgumentException() {
+    public void givenANullIdAsUUID_whenCreateUserId_thenThrowIllegalArgumentException() {
         //Given
         final UUID givenUUID = null;
 
@@ -79,7 +79,7 @@ public class UserIdTest {
 // ------------------------------------------------------------------------------------------------------------------ \\
 
     @Test
-    public void givenAValidUserIdWithSpecificUUID_whenGetValue_thenShouldReturnTheSameUUID() {
+    public void givenAValidUserIdWithSpecificId_whenGetValue_thenShouldReturnTheSameId() {
         //Given
         final UUID givenUUID = UUID.randomUUID();
 
@@ -94,7 +94,7 @@ public class UserIdTest {
     }
 
     @Test
-    public void givenAValidUserIdWithSpecificUUID_whenGetValueAsString_thenShouldReturnTheSameUUID() {
+    public void givenAValidUserIdWithSpecificId_whenGetValueAsString_thenShouldReturnTheSameId() {
         //Given
         final UUID givenUUID = UUID.randomUUID();
 
