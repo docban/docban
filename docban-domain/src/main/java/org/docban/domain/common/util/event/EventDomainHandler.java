@@ -15,6 +15,10 @@ public final class EventDomainHandler {
         listeners.add( listener );
     }
 
+    public static final <E extends EventDomain, L extends EventDomainListener<E>> void addEventListener( final Class<E> event, final L... listeners ){
+        Arrays.stream( listeners ).forEach( listener -> addEventListener( event, listener ) );
+    }
+
     public static final <E extends EventDomain, L extends EventDomainListener<E>> void addEventListener( final Class<E> event, final List<L> listeners ){
         listeners.stream().forEach( listener -> addEventListener( event, listener ) );
     }
